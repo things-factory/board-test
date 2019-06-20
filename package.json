@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/board-test",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -37,6 +37,7 @@
     "@things-factory/setting-ui": "*",
     "@things-factory/shell": "*",
     "@things-factory/system-ui": "*",
+    "@things-scene/form": "*",
     "@things-scene/half-roundrect": "*",
     "@things-scene/label": "*",
     "@things-scene/wheel-sorter": "*"
