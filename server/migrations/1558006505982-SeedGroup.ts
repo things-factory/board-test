@@ -5,7 +5,19 @@ import { Group } from '@things-factory/board-base'
 
 const SEED_GROUP = [
   {
-    name: 'SAMPLE',
+    name: 'DASHBOARD',
+    description: 'Dashboard'
+  },
+  {
+    name: 'WAREHOUSE',
+    description: 'sample group'
+  },
+  {
+    name: 'MANUFACTURING',
+    description: 'sample group'
+  },
+  {
+    name: 'LABEL',
     description: 'sample group'
   }
 ]

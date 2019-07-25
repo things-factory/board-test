@@ -4,30 +4,6 @@ import { Domain } from '@things-factory/shell'
 import { Group } from '@things-factory/board-base'
 
 const SEED_GROUP = [
-  {
-    name: 'GROUP-2',
-    description: 'sample group'
-  },
-  {
-    name: 'GROUP-3',
-    description: 'sample group'
-  },
-  {
-    name: 'GROUP-4',
-    description: 'sample group'
-  },
-  {
-    name: 'GROUP-5',
-    description: 'sample group'
-  },
-  {
-    name: 'GROUP-6',
-    description: 'sample group'
-  },
-  {
-    name: 'GROUP-7',
-    description: 'sample group'
-  }
 ]
 
 export class ManyGroups1561627935961 implements MigrationInterface {

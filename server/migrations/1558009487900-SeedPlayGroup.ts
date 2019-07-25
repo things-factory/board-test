@@ -5,8 +5,16 @@ import { Board, PlayGroup } from '@things-factory/board-base'
 
 const SEED_PLAY_GROUP = [
   {
-    name: 'PLAYLIST 01',
-    description: 'sample play-group'
+    name: 'W/H STATUS',
+    description: 'Warehouse status board'
+  },
+  {
+    name: 'M/F STATUS',
+    description: 'Manufacturing status board'
+  },
+  {
+    name: 'VISUALIZER',
+    description: 'Visualizer'
   }
 ]
 
