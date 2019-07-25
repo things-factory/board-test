@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/board-test",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -38,6 +38,7 @@
     "@things-factory/setting-ui": "*",
     "@things-factory/shell": "*",
     "@things-factory/system-ui": "*",
+    "@things-scene/chartjs": "ThingsElements/things-scene-chartjs#for-things-factory",
     "@things-scene/form": "*",
     "@things-scene/half-roundrect": "*",
     "@things-scene/label": "*",
