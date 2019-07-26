@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "@things-factory/board-app": "*",
-    "@things-factory/board-ui": "*"
+    "@things-factory/board-ui": "*",
+    "@things-factory/print-service": "^1.0.0-beta"
   }
 }
