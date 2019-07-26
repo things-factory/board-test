@@ -3,7 +3,7 @@ import { Domain } from '@things-factory/shell'
 import { Menu } from '@things-factory/menu-base'
 import { Board, PlayGroup } from '@things-factory/board-base'
 
-export class SeedBoardMenu1558015337291 implements MigrationInterface {
+export class SeedBoardMenu1564115337291 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     const repository = getRepository(Menu)
     const domainRepository = getRepository(Domain)
@@ -56,7 +56,7 @@ export class SeedBoardMenu1558015337291 implements MigrationInterface {
         // fixedColumns: 0,
         hiddenFlag: false,
         pagination: false,
-        name: 'Board',
+        name: 'DashBoard',
         rank: 20000,
         menuType: 'MENU',
         category: 'STANDARD'
