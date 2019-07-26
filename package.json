@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/board-test",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -23,22 +23,6 @@
     "migration:revert": "node ./node_modules/typeorm/cli.js migration:revert"
   },
   "dependencies": {
-    "@things-factory/auth-provider-jwt": "*",
-    "@things-factory/auth-ui-jwt": "*",
-    "@things-factory/board-app": "*",
-    "@things-factory/board-ui": "*",
-    "@things-factory/context-ui": "*",
-    "@things-factory/export-ui-csv": "*",
-    "@things-factory/export-ui-excel": "*",
-    "@things-factory/i18n-ui": "*",
-    "@things-factory/import-ui-csv": "*",
-    "@things-factory/import-ui-excel": "*",
-    "@things-factory/layout-ui": "*",
-    "@things-factory/more-ui": "*",
-    "@things-factory/print-ui": "*",
-    "@things-factory/setting-ui": "*",
-    "@things-factory/shell": "*",
-    "@things-factory/system-ui": "*",
     "@things-scene/baidu-map": "*",
     "@things-scene/chartjs": "ThingsElements/things-scene-chartjs#for-things-factory",
     "@things-scene/clock": "*",
@@ -71,5 +55,8 @@
     "@things-scene/visualizer": "ThingsElements/things-scene-visualizer#for-things-factory",
     "@things-scene/wheel-sorter": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@things-factory/board-app": "*",
+    "@things-factory/board-ui": "*"
+  }
 }
