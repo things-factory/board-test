@@ -3,20 +3,7 @@ import { getRepository } from 'typeorm'
 import { Domain } from '@things-factory/shell'
 import { Board, PlayGroup } from '@things-factory/board-base'
 
-const SEED_PLAY_GROUP = [
-  {
-    name: 'W/H STATUS',
-    description: 'Warehouse status board'
-  },
-  {
-    name: 'M/F STATUS',
-    description: 'Manufacturing status board'
-  },
-  {
-    name: 'VISUALIZER',
-    description: 'Visualizer'
-  }
-]
+const SEED_PLAY_GROUP = []
 
 export class SeedPlayGroup1558009487900 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
