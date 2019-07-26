@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/board-test",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -23,6 +23,7 @@
     "migration:revert": "node ./node_modules/typeorm/cli.js migration:revert"
   },
   "dependencies": {
+    "@things-factory/shell": "*",
     "@things-scene/baidu-map": "*",
     "@things-scene/chartjs": "ThingsElements/things-scene-chartjs#for-things-factory",
     "@things-scene/clock": "*",
