@@ -4,6 +4,7 @@ import { Domain } from '@things-factory/shell'
 import { Board, Group } from '@things-factory/board-base'
 
 const SEED_BOARD = {
+  id: '34383b7e-9b3c-481c-8ccb-fb48383fee43',
   name: 'LABEL 02',
   description: 'sample label 02',
   width: 803,

@@ -3,8 +3,7 @@ import { getRepository } from 'typeorm'
 import { Domain } from '@things-factory/shell'
 import { Group } from '@things-factory/board-base'
 
-const SEED_GROUP = [
-]
+const SEED_GROUP = []
 
 export class ManyGroups1561627935961 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {

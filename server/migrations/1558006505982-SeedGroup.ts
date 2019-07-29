@@ -5,18 +5,22 @@ import { Group } from '@things-factory/board-base'
 
 const SEED_GROUP = [
   {
+    id: 'fffe0fb6-90ed-4405-ae5a-43e0ee7e12ec',
     name: 'DASHBOARD',
     description: 'Dashboard'
   },
   {
+    id: 'dbb0f731-dd06-4e70-8e7d-742adbfac5ee',
     name: 'LABEL',
     description: 'LABEL'
   },
   {
+    id: '10667d11-9b95-47c9-bd0f-788cd161c9a5',
     name: 'WAREHOUSE',
     description: 'WAREHOUSE'
   },
   {
+    id: 'c385e355-6dfe-4386-a0cc-a7bbaa0e16f7',
     name: 'LOGISTICS',
     description: 'LOGISTICS'
   }
