@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/board-test",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -59,8 +59,8 @@
   "devDependencies": {
     "@things-factory/board-app": "*",
     "@things-factory/board-ui": "*",
-    "@things-factory/print-proxy-service": "*",
-    "@things-factory/print-service": "*",
+    "@things-factory/print-proxy-service": "^1.0.0-beta.3",
+    "@things-factory/print-service": "^1.0.0-beta.4",
     "@things-factory/screencast-proxy-service": "^1.0.0-beta"
   }
 }
