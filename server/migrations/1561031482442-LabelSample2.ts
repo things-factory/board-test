@@ -3,7 +3,9 @@ import { getRepository } from 'typeorm'
 import { Domain } from '@things-factory/shell'
 import { Board, Group } from '@things-factory/board-base'
 
-const SEED_BOARD = {
+const SEED_BOARD = {}
+/*
+{
   id: '34383b7e-9b3c-481c-8ccb-fb48383fee43',
   name: 'LABEL 02',
   description: 'sample label 02',
@@ -14,6 +16,7 @@ const SEED_BOARD = {
   published: true,
   fit: 'both'
 }
+*/
 
 export class SeedLabelSample21561031482442 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
