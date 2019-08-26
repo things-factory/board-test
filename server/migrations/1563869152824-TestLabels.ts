@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm'
 import { getRepository } from 'typeorm'
 import { Domain } from '@things-factory/shell'
-import { Group, Board } from '@things-factory/board-base'
+import { Group, Board } from '@things-factory/board-service'
 
 const LABEL_BOARD = [
   {

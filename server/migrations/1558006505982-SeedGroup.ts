@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm'
 import { getRepository } from 'typeorm'
 import { Domain } from '@things-factory/shell'
-import { Group } from '@things-factory/board-base'
+import { Group } from '@things-factory/board-service'
 
 const SEED_GROUP = [
   {
