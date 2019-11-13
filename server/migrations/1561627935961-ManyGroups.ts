@@ -9,7 +9,7 @@ export class ManyGroups1561627935961 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     const repository = getRepository(Group)
     const domainRepository = getRepository(Domain)
-    const domain = await domainRepository.findOne({ name: 'SYSTEM' })
+    const domain = await domainRepository.findOne({ name: 'DEMO' })
 
     try {
       SEED_GROUP.forEach(async group => {

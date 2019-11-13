@@ -9,7 +9,7 @@ export class SeedPlayGroup1558009487900 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     const repository = getRepository(PlayGroup)
     const domainRepository = getRepository(Domain)
-    const domain = await domainRepository.findOne({ name: 'SYSTEM' })
+    const domain = await domainRepository.findOne({ name: 'DEMO' })
 
     const boardRepository = getRepository(Board)
     const boards = await boardRepository.find()

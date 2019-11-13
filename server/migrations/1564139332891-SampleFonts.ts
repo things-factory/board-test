@@ -73,7 +73,7 @@ export class SampleFonts1564139332891 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     const repository = getRepository(Font)
     const domainRepository = getRepository(Domain)
-    const domain = await domainRepository.findOne({ name: 'SYSTEM' })
+    const domain = await domainRepository.findOne({ name: 'DEMO' })
 
     try {
       FONTS.forEach(async font => {

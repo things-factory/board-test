@@ -1,0 +1,512 @@
+yarn run v1.15.2
+$ npm run build:server && things-factory-migration
+
+> @things-factory/board-test@1.0.0-alpha.2 build:server /Users/super/Documents/Things-Factory/board-test
+> npm run clean:server && tsc
+
+
+> @things-factory/board-test@1.0.0-alpha.2 clean:server /Users/super/Documents/Things-Factory/board-test
+> rm -rf dist-server
+
+
+[ ORDERED MODULE LIST ]
+- 0 : @things-factory/shell
+- 1 : @things-factory/apptool-base
+- 2 : @things-factory/layout-base
+- 3 : @things-factory/apptool-ui
+- 4 : @things-factory/auth-base
+- 5 : @things-factory/font-base
+- 6 : @things-factory/board-service
+- 7 : @things-factory/attachment-base
+- 8 : @things-factory/image-uploader-ui
+- 9 : @things-factory/attachment-ui
+- 10 : @things-factory/print-proxy-service
+- 11 : @things-factory/print-base
+- 12 : @things-factory/barcode-base
+- 13 : @things-factory/font-ui
+- 14 : @things-factory/grist-ui
+- 15 : @things-factory/i18n-base
+- 16 : @things-factory/board-ui
+- 17 : @things-factory/context-base
+- 18 : @things-factory/layout-ui
+- 19 : @things-factory/context-ui
+- 20 : @things-factory/export-base
+- 21 : @things-factory/export-ui
+- 22 : @things-factory/more-base
+- 23 : @things-factory/more-ui
+- 24 : @things-factory/offline-base
+- 25 : @things-factory/offline-ui
+- 26 : @things-factory/print-service
+- 27 : @things-factory/print-ui
+- 28 : @things-factory/publisher-base
+- 29 : @things-factory/publisher-service
+- 30 : @things-factory/publisher-ui
+- 31 : @things-factory/auth-provider-jwt
+- 32 : @things-factory/auth-ui-jwt
+- 33 : @things-factory/component-ui
+- 34 : @things-factory/fav-base
+- 35 : @things-factory/form-ui
+- 36 : @things-factory/code-base
+- 37 : @things-factory/setting-base
+- 38 : @things-factory/i18n-ui
+- 39 : @things-factory/import-base
+- 40 : @things-factory/import-ui
+- 41 : @things-factory/import-ui-csv
+- 42 : @things-factory/menu-base
+- 43 : @things-factory/resource-base
+- 44 : @things-factory/resource-ui
+- 45 : @things-factory/screencast-proxy-service
+- 46 : @things-factory/screencast-base
+- 47 : @things-factory/screencast-ui
+- 48 : @things-factory/setting-ui
+- 49 : @things-factory/system-base
+- 50 : @things-factory/system-ui
+- 51 : @things-factory/board-app
+- 52 : @things-factory/board-test
+[/ ORDERED MODULE LIST ]
+
+
+
+############ [ SERVER CONFIGURATIONS - BEGIN ] ##############
+
+{}
+
+############ [ SERVER CONFIGURATIONS - END ] ################
+
+
+entities
+[ [Function: Domain],
+  [Function: UserNotification],
+  [Function: User],
+  [Function: UserHistory],
+  [Function: Role],
+  [Function: PermitUrl],
+  [Function: Priviledge],
+  [Function: Appliance],
+  [Function: Font],
+  [Function: Group],
+  [Function: Board],
+  [Function: PlayGroup],
+  [Function: Attachment],
+  [Function: Terminology],
+  [Function: Publisher],
+  [Function: Favorite],
+  [Function: CommonCode],
+  [Function: CommonCodeDetail],
+  [Function: Setting],
+  [Function: Menu],
+  [Function: MenuButton],
+  [Function: MenuColumn],
+  [Function: MenuDetail],
+  [Function: MenuDetailColumn],
+  [Function: MenuDetailButton],
+  [Function: Entity],
+  [Function: EntityColumn] ]
+migrations
+[ [Function: SeedDomain1000000000000],
+  [Function: SeedUsers1525758367829],
+  [Function: SeedPriviledge1566805283882],
+  [Function: seedFonts1556862253039],
+  [Function: SeedPriviledge1567671344025],
+  [Function: SeedDemoDomain1558006504001],
+  [Function: SeedGroup1558006505982],
+  [Function: Board1558006512362],
+  [Function: SeedPlayGroup1558009487900] ]
+subscribers
+[]
+query: BEGIN TRANSACTION
+query: SELECT * FROM "sqlite_master" WHERE "type" = 'table' AND "name" IN ('domains', 'users_notifications', 'priviledges', 'roles', 'users', 'user_histories', 'permit_urls', 'appliances', 'groups', 'play_groups', 'boards', 'fonts', 'attachments', 'terminologies', 'publishers', 'favorites', 'common_code_details', 'common_codes', 'settings', 'menu_buttons', 'menu_columns', 'menus', 'menu_detail_buttons', 'menu_detail_columns', 'menu_details', 'entity_columns', 'entities', 'roles_priviledges', 'users_domains', 'users_roles', 'play_groups_boards')
+query: SELECT * FROM "sqlite_master" WHERE "type" = 'index' AND "tbl_name" IN ('domains', 'users_notifications', 'priviledges', 'roles', 'users', 'user_histories', 'permit_urls', 'appliances', 'groups', 'play_groups', 'boards', 'fonts', 'attachments', 'terminologies', 'publishers', 'favorites', 'common_code_details', 'common_codes', 'settings', 'menu_buttons', 'menu_columns', 'menus', 'menu_detail_buttons', 'menu_detail_columns', 'menu_details', 'entity_columns', 'entities', 'roles_priviledges', 'users_domains', 'users_roles', 'play_groups_boards')
+query: SELECT * FROM "sqlite_master" WHERE "type" = 'table' AND "name" = 'typeorm_metadata'
+query: CREATE TABLE "domains" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "timezone" varchar, "system_flag" boolean NOT NULL DEFAULT (0), "subdomain" varchar, "brand_name" varchar, "brand_image" varchar, "content_image" varchar, "theme" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), CONSTRAINT "UQ_f36af68a2defaa8ae5fdd9b5640" UNIQUE ("name"))
+query: CREATE INDEX "ix_domain_2" ON "domains" ("system_flag") 
+query: CREATE INDEX "ix_domain_1" ON "domains" ("subdomain") 
+query: CREATE UNIQUE INDEX "ix_domain_0" ON "domains" ("name") 
+query: CREATE TABLE "users_notifications" ("id" varchar PRIMARY KEY NOT NULL, "user_id" varchar NOT NULL, "subscription" varchar NOT NULL)
+query: CREATE TABLE "priviledges" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "category" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_priviledge_0" ON "priviledges" ("domain_id", "name", "category") 
+query: CREATE TABLE "roles" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_role_0" ON "roles" ("domain_id", "name") 
+query: CREATE TABLE "users" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "email" varchar NOT NULL, "password" varchar, "user_type" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_user_0" ON "users" ("domain_id", "email") 
+query: CREATE TABLE "user_histories" ("id" varchar PRIMARY KEY NOT NULL, "status" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "user_account_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_user_histories_0" ON "user_histories" ("domain_id", "id") 
+query: CREATE TABLE "permit_urls" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "type" varchar NOT NULL, "active" boolean DEFAULT (0), "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_permit_url_0" ON "permit_urls" ("domain_id", "name") 
+query: CREATE TABLE "appliances" ("id" varchar PRIMARY KEY NOT NULL, "appliance_id" varchar NOT NULL, "name" varchar NOT NULL, "brand" varchar NOT NULL, "model" varchar NOT NULL, "type" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_appliance_0" ON "appliances" ("domain_id", "name", "appliance_id") 
+query: CREATE TABLE "groups" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_group_0" ON "groups" ("domain_id", "name") 
+query: CREATE TABLE "play_groups" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_play_group_0" ON "play_groups" ("domain_id", "name") 
+query: CREATE TABLE "boards" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "model" varchar, "thumbnail" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "group_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_board_3" ON "boards" ("domain_id", "group_id") 
+query: CREATE UNIQUE INDEX "ix_board_0" ON "boards" ("domain_id", "name") 
+query: CREATE TABLE "fonts" ("id" varchar PRIMARY KEY NOT NULL, "name" text NOT NULL, "provider" text NOT NULL, "uri" text, "path" text, "active" boolean NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_font_0" ON "fonts" ("domain_id", "name") 
+query: CREATE TABLE "attachments" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "mimetype" varchar NOT NULL, "encoding" text NOT NULL, "category" varchar, "ref_by" varchar, "path" varchar NOT NULL, "size" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar NOT NULL, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_attachment_2" ON "attachments" ("domain_id", "ref_by") 
+query: CREATE INDEX "ix_attachment_1" ON "attachments" ("domain_id", "category", "name") 
+query: CREATE INDEX "ix_attachment_0" ON "attachments" ("domain_id", "name") 
+query: CREATE TABLE "terminologies" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "locale" varchar NOT NULL, "category" varchar NOT NULL, "display" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar)
+query: CREATE INDEX "ix_term_3" ON "terminologies" ("domain_id", "locale", "name") 
+query: CREATE INDEX "ix_term_2" ON "terminologies" ("domain_id", "locale") 
+query: CREATE INDEX "ix_term_1" ON "terminologies" ("domain_id") 
+query: CREATE UNIQUE INDEX "ix_term_0" ON "terminologies" ("domain_id", "locale", "category", "name") 
+query: CREATE TABLE "publishers" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "interval_expr" varchar(80), "api_url" varchar, "timezone" varchar, "repeat_count" integer, "status" int2, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "UQ_39082806f986a63cd7dcf1782a5" UNIQUE ("name"))
+query: CREATE INDEX "ix_publisher_2" ON "publishers" ("domain_id", "api_url") 
+query: CREATE INDEX "ix_publisher_1" ON "publishers" ("domain_id", "status") 
+query: CREATE UNIQUE INDEX "ix_publisher_0" ON "publishers" ("domain_id", "name") 
+query: CREATE TABLE "favorites" ("id" varchar PRIMARY KEY NOT NULL, "user_id" varchar NOT NULL, "routing" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_favorite_0" ON "favorites" ("domain_id", "user_id", "routing") 
+query: CREATE TABLE "common_code_details" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar NOT NULL, "rank" integer NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "common_code_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE UNIQUE INDEX "ix_common_code_detail_1" ON "common_code_details" ("common_code_id", "rank") 
+query: CREATE UNIQUE INDEX "ix_common_code_detail_0" ON "common_code_details" ("common_code_id", "name") 
+query: CREATE TABLE "common_codes" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_common_code_1" ON "common_codes" ("domain_id") 
+query: CREATE UNIQUE INDEX "ix_common_code_0" ON "common_codes" ("domain_id", "name") 
+query: CREATE TABLE "settings" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar NOT NULL, "category" varchar NOT NULL, "value" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar NOT NULL, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_setting_1" ON "settings" ("domain_id", "category") 
+query: CREATE UNIQUE INDEX "ix_setting_0" ON "settings" ("domain_id", "name") 
+query: CREATE TABLE "menu_buttons" ("id" varchar PRIMARY KEY NOT NULL, "rank" integer, "style" varchar, "icon" varchar, "text" varchar NOT NULL, "auth" varchar, "logic" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_menu_button_1" ON "menu_buttons" ("menu_id") 
+query: CREATE UNIQUE INDEX "ix_menu_button_0" ON "menu_buttons" ("menu_id", "text") 
+query: CREATE TABLE "menu_columns" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "rank" integer, "term" varchar, "col_type" varchar NOT NULL, "col_size" integer, "nullable" boolean NOT NULL DEFAULT (1), "ref_type" varchar, "ref_name" varchar, "ref_url" varchar, "ref_params" varchar, "ref_related" varchar, "search_rank" integer, "sort_rank" integer, "reverse_sort" boolean, "virtual_field" boolean, "ext_field" boolean, "search_name" varchar, "search_editor" varchar, "search_oper" varchar, "search_init_val" varchar, "grid_rank" integer, "grid_editor" varchar, "grid_format" varchar, "grid_validator" varchar, "grid_width" integer, "grid_align" varchar, "uniq_rank" integer, "form_editor" varchar, "form_validator" varchar, "form_format" varchar, "def_val" varchar, "range_val" varchar, "ignore_on_save" boolean NOT NULL DEFAULT (0), "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_menu_column_1" ON "menu_columns" ("menu_id", "rank") 
+query: CREATE UNIQUE INDEX "ix_menu_column_0" ON "menu_columns" ("domain_id", "menu_id", "name") 
+query: CREATE TABLE "menus" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "template" varchar, "menu_type" varchar, "category" varchar, "rank" integer, "icon_path" varchar, "hidden_flag" boolean, "routing" varchar, "routing_type" varchar, "detail_form_id" varchar, "detail_layout" varchar, "resource_type" varchar, "resource_name" varchar, "resource_url" varchar, "grid_save_url" varchar, "id_field" varchar, "title_field" varchar, "pagination" boolean, "items_prop" varchar, "total_prop" varchar, "fixed_columns" integer, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "parent_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_menu_2" ON "menus" ("domain_id", "category", "menu_type", "rank") 
+query: CREATE INDEX "ix_menu_1" ON "menus" ("domain_id", "parent_id") 
+query: CREATE UNIQUE INDEX "ix_menu_0" ON "menus" ("domain_id", "name") 
+query: CREATE TABLE "menu_detail_buttons" ("id" varchar PRIMARY KEY NOT NULL, "text" varchar NOT NULL, "rank" integer, "icon" varchar, "style" varchar, "logic" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_detail_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_menu_detail_btn_1" ON "menu_detail_buttons" ("menu_detail_id") 
+query: CREATE UNIQUE INDEX "ix_menu_detail_btn_0" ON "menu_detail_buttons" ("menu_detail_id", "text") 
+query: CREATE TABLE "menu_detail_columns" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "rank" integer, "term" varchar, "col_type" varchar NOT NULL, "col_size" integer, "nullable" boolean, "ref_type" varchar, "ref_name" varchar, "ref_url" varchar, "ref_params" varchar, "ref_related" varchar, "search_rank" integer, "sort_rank" integer, "reverse_sort" boolean, "virtual_field" boolean, "search_name" varchar, "search_editor" varchar, "search_oper" varchar, "search_init_val" varchar, "grid_rank" integer, "grid_editor" varchar, "grid_format" varchar, "grid_validator" varchar, "grid_width" integer, "grid_align" varchar, "uniq_rank" integer, "form_editor" varchar, "form_validator" varchar, "form_format" varchar, "def_val" varchar, "range_val" varchar, "ignore_on_save" boolean, "ext_field" boolean, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_detail_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_menu_detail_col_1" ON "menu_detail_columns" ("menu_detail_id", "rank") 
+query: CREATE UNIQUE INDEX "ix_menu_detail_col_0" ON "menu_detail_columns" ("menu_detail_id", "name") 
+query: CREATE TABLE "menu_details" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "view_section" varchar NOT NULL, "entity_id" varchar, "data_prop" varchar, "association" varchar, "search_url" varchar, "save_url" varchar, "master_field" varchar, "custom_view" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "REL_72d09a2e9dcb1ff5536273c94e" UNIQUE ("menu_id"))
+query: CREATE INDEX "ix_menu_detail_1" ON "menu_details" ("menu_id") 
+query: CREATE UNIQUE INDEX "ix_menu_detail_0" ON "menu_details" ("menu_id", "name") 
+query: CREATE TABLE "entity_columns" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "rank" integer, "term" varchar, "col_type" varchar NOT NULL, "col_size" integer, "nullable" boolean DEFAULT (1), "ref_type" varchar, "ref_name" varchar, "ref_url" varchar, "ref_params" varchar, "ref_related" varchar, "search_rank" integer, "sort_rank" integer, "reverse_sort" boolean DEFAULT (0), "virtual_field" boolean DEFAULT (0), "search_name" varchar, "search_editor" varchar, "search_oper" varchar, "search_init_val" varchar, "grid_rank" integer, "grid_editor" varchar, "grid_format" varchar, "grid_validator" varchar, "grid_width" integer, "grid_align" varchar, "uniq_rank" integer, "form_editor" varchar, "form_validator" varchar, "form_format" varchar, "def_val" varchar, "range_val" varchar, "ignore_on_sav" boolean DEFAULT (0), "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "entity_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_entity_col_1" ON "entity_columns" ("entity_id", "rank") 
+query: CREATE UNIQUE INDEX "ix_entity_col_0" ON "entity_columns" ("entity_id", "name") 
+query: CREATE TABLE "entities" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "bundle" varchar NOT NULL, "table_name" varchar NOT NULL, "search_url" varchar, "multi_save_url" varchar, "id_type" varchar, "id_field" varchar, "title_field" varchar, "association" varchar, "data_prop" varchar, "ref_field" varchar, "del_strategy" varchar, "fixed_columns" integer, "active" boolean NOT NULL DEFAULT (1), "ext_entity" boolean, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "master_id" varchar, "creator_id" varchar, "updater_id" varchar)
+query: CREATE INDEX "ix_entity_3" ON "entities" ("domain_id", "master_id") 
+query: CREATE INDEX "ix_entity_2" ON "entities" ("bundle") 
+query: CREATE INDEX "ix_entity_1" ON "entities" ("domain_id") 
+query: CREATE UNIQUE INDEX "ix_entity_0" ON "entities" ("domain_id", "name") 
+query: CREATE TABLE "roles_priviledges" ("roles_id" varchar NOT NULL, "priviledges_id" varchar NOT NULL, PRIMARY KEY ("roles_id", "priviledges_id"))
+query: CREATE INDEX "IDX_c7f704a26d8958c1cfe70ddd40" ON "roles_priviledges" ("roles_id") 
+query: CREATE INDEX "IDX_da1d04ed7d0b1f0e0eb2c66b1a" ON "roles_priviledges" ("priviledges_id") 
+query: CREATE TABLE "users_domains" ("users_id" varchar NOT NULL, "domains_id" varchar NOT NULL, PRIMARY KEY ("users_id", "domains_id"))
+query: CREATE INDEX "IDX_526b3212bf7fe24901b6c210ff" ON "users_domains" ("users_id") 
+query: CREATE INDEX "IDX_6ea0f04cc168ae7e2377ffc8d7" ON "users_domains" ("domains_id") 
+query: CREATE TABLE "users_roles" ("users_id" varchar NOT NULL, "roles_id" varchar NOT NULL, PRIMARY KEY ("users_id", "roles_id"))
+query: CREATE INDEX "IDX_259b5a2e24d0a5480262a774e4" ON "users_roles" ("users_id") 
+query: CREATE INDEX "IDX_ed1bb3304475cfa49b2964aaf2" ON "users_roles" ("roles_id") 
+query: CREATE TABLE "play_groups_boards" ("play_groups_id" varchar NOT NULL, "boards_id" varchar NOT NULL, PRIMARY KEY ("play_groups_id", "boards_id"))
+query: CREATE INDEX "IDX_1d0c7c9ac6c4c6de23e3d9c781" ON "play_groups_boards" ("play_groups_id") 
+query: CREATE INDEX "IDX_ad3fcb2d67679ee10b39382a22" ON "play_groups_boards" ("boards_id") 
+query: DROP INDEX "ix_priviledge_0"
+query: CREATE TABLE "temporary_priviledges" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "category" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_5d6062edf0164d549233d50841a" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_3b0b12737929c0662773ed52ce6" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_2bcbd42e72b2eb86813f1c22ca1" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "priviledges"
+query: DROP TABLE "priviledges"
+query: ALTER TABLE "temporary_priviledges" RENAME TO "priviledges"
+query: CREATE UNIQUE INDEX "ix_priviledge_0" ON "priviledges" ("domain_id", "name", "category") 
+query: DROP INDEX "ix_role_0"
+query: CREATE TABLE "temporary_roles" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_b2aef658765c9b59c454d561772" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_3635aa9ee16131f1c9662c25ddb" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_0846edb706730030e990e045566" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_roles"("id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "roles"
+query: DROP TABLE "roles"
+query: ALTER TABLE "temporary_roles" RENAME TO "roles"
+query: CREATE UNIQUE INDEX "ix_role_0" ON "roles" ("domain_id", "name") 
+query: DROP INDEX "ix_user_0"
+query: CREATE TABLE "temporary_users" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "email" varchar NOT NULL, "password" varchar, "user_type" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_b07612fc9ab8c40bf34f0dcfe65" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_eebaffddb3c6e049fa709e7de02" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_f888062b5f2236776e033903cea" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_users"("id", "name", "description", "email", "password", "user_type", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "email", "password", "user_type", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "users"
+query: DROP TABLE "users"
+query: ALTER TABLE "temporary_users" RENAME TO "users"
+query: CREATE UNIQUE INDEX "ix_user_0" ON "users" ("domain_id", "email") 
+query: DROP INDEX "ix_user_histories_0"
+query: CREATE TABLE "temporary_user_histories" ("id" varchar PRIMARY KEY NOT NULL, "status" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "user_account_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_ea3bbd1c51908d8bd9666024c01" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_da6e302a7509d30fe77b757ed46" FOREIGN KEY ("user_account_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_87a5a4f78ef2e82bfbfd6faaf4d" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_b5460f11c80d09ecefb6eccdc41" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_user_histories"("id", "status", "created_at", "updated_at", "domain_id", "user_account_id", "creator_id", "updater_id") SELECT "id", "status", "created_at", "updated_at", "domain_id", "user_account_id", "creator_id", "updater_id" FROM "user_histories"
+query: DROP TABLE "user_histories"
+query: ALTER TABLE "temporary_user_histories" RENAME TO "user_histories"
+query: CREATE UNIQUE INDEX "ix_user_histories_0" ON "user_histories" ("domain_id", "id") 
+query: DROP INDEX "ix_permit_url_0"
+query: CREATE TABLE "temporary_permit_urls" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "type" varchar NOT NULL, "active" boolean DEFAULT (0), "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_9bf37dd6e6c58e2a7b454251f5b" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_14f97ab02ee7dd36ec9311848f1" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_3f973eeeb50fcab7f9c6c53e585" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_permit_urls"("id", "name", "description", "type", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "type", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "permit_urls"
+query: DROP TABLE "permit_urls"
+query: ALTER TABLE "temporary_permit_urls" RENAME TO "permit_urls"
+query: CREATE UNIQUE INDEX "ix_permit_url_0" ON "permit_urls" ("domain_id", "name") 
+query: DROP INDEX "ix_appliance_0"
+query: CREATE TABLE "temporary_appliances" ("id" varchar PRIMARY KEY NOT NULL, "appliance_id" varchar NOT NULL, "name" varchar NOT NULL, "brand" varchar NOT NULL, "model" varchar NOT NULL, "type" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_42072787865c2b7f14bf9b70f88" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_94d6cb68df94598cee9bdc187e3" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_4007415eff019b4aa6c6c787f6b" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_appliances"("id", "appliance_id", "name", "brand", "model", "type", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "appliance_id", "name", "brand", "model", "type", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "appliances"
+query: DROP TABLE "appliances"
+query: ALTER TABLE "temporary_appliances" RENAME TO "appliances"
+query: CREATE UNIQUE INDEX "ix_appliance_0" ON "appliances" ("domain_id", "name", "appliance_id") 
+query: DROP INDEX "ix_group_0"
+query: CREATE TABLE "temporary_groups" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_a6cb40856cb045637c10eebff9d" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_33b49cd404bac777f795028c3b0" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_af627300f0e3f98ee9c40650e48" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_groups"("id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "groups"
+query: DROP TABLE "groups"
+query: ALTER TABLE "temporary_groups" RENAME TO "groups"
+query: CREATE UNIQUE INDEX "ix_group_0" ON "groups" ("domain_id", "name") 
+query: DROP INDEX "ix_play_group_0"
+query: CREATE TABLE "temporary_play_groups" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_85e50871fb9e69afa16f2d482d8" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_883c45d30251551aba091789e25" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_1b968c0565cda0a74d217ea4b0a" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_play_groups"("id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "play_groups"
+query: DROP TABLE "play_groups"
+query: ALTER TABLE "temporary_play_groups" RENAME TO "play_groups"
+query: CREATE UNIQUE INDEX "ix_play_group_0" ON "play_groups" ("domain_id", "name") 
+query: DROP INDEX "ix_board_3"
+query: DROP INDEX "ix_board_0"
+query: CREATE TABLE "temporary_boards" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "model" varchar, "thumbnail" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "group_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_d7c7a33ced0a9d51badf013e495" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_6c6dd32ae9a295c682a6adbc5f5" FOREIGN KEY ("group_id") REFERENCES "groups" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_3b21985113674a7d8241856d063" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_1124db98379022fcc7c4c46b4ad" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_boards"("id", "name", "description", "model", "thumbnail", "created_at", "updated_at", "domain_id", "group_id", "creator_id", "updater_id") SELECT "id", "name", "description", "model", "thumbnail", "created_at", "updated_at", "domain_id", "group_id", "creator_id", "updater_id" FROM "boards"
+query: DROP TABLE "boards"
+query: ALTER TABLE "temporary_boards" RENAME TO "boards"
+query: CREATE INDEX "ix_board_3" ON "boards" ("domain_id", "group_id") 
+query: CREATE UNIQUE INDEX "ix_board_0" ON "boards" ("domain_id", "name") 
+query: DROP INDEX "ix_font_0"
+query: CREATE TABLE "temporary_fonts" ("id" varchar PRIMARY KEY NOT NULL, "name" text NOT NULL, "provider" text NOT NULL, "uri" text, "path" text, "active" boolean NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_985026972188093eb4e0c273826" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_440183a585b8f18f4c06eef2f4f" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_fe2aa2c55f555d42d1e844e35a1" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_fonts"("id", "name", "provider", "uri", "path", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "provider", "uri", "path", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "fonts"
+query: DROP TABLE "fonts"
+query: ALTER TABLE "temporary_fonts" RENAME TO "fonts"
+query: CREATE UNIQUE INDEX "ix_font_0" ON "fonts" ("domain_id", "name") 
+query: DROP INDEX "ix_attachment_2"
+query: DROP INDEX "ix_attachment_1"
+query: DROP INDEX "ix_attachment_0"
+query: CREATE TABLE "temporary_attachments" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "mimetype" varchar NOT NULL, "encoding" text NOT NULL, "category" varchar, "ref_by" varchar, "path" varchar NOT NULL, "size" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar NOT NULL, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_d6aebe150a9c8bc901053544e69" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_537b9c0d54abcdd13c501d0edc9" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_c47b8f7aa45d35f43362662618b" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_attachments"("id", "name", "description", "mimetype", "encoding", "category", "ref_by", "path", "size", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "mimetype", "encoding", "category", "ref_by", "path", "size", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "attachments"
+query: DROP TABLE "attachments"
+query: ALTER TABLE "temporary_attachments" RENAME TO "attachments"
+query: CREATE INDEX "ix_attachment_2" ON "attachments" ("domain_id", "ref_by") 
+query: CREATE INDEX "ix_attachment_1" ON "attachments" ("domain_id", "category", "name") 
+query: CREATE INDEX "ix_attachment_0" ON "attachments" ("domain_id", "name") 
+query: DROP INDEX "ix_term_3"
+query: DROP INDEX "ix_term_2"
+query: DROP INDEX "ix_term_1"
+query: DROP INDEX "ix_term_0"
+query: CREATE TABLE "temporary_terminologies" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "locale" varchar NOT NULL, "category" varchar NOT NULL, "display" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, CONSTRAINT "FK_4166ecdc522586df0ec9c3759ce" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_terminologies"("id", "name", "description", "locale", "category", "display", "created_at", "updated_at", "domain_id") SELECT "id", "name", "description", "locale", "category", "display", "created_at", "updated_at", "domain_id" FROM "terminologies"
+query: DROP TABLE "terminologies"
+query: ALTER TABLE "temporary_terminologies" RENAME TO "terminologies"
+query: CREATE INDEX "ix_term_3" ON "terminologies" ("domain_id", "locale", "name") 
+query: CREATE INDEX "ix_term_2" ON "terminologies" ("domain_id", "locale") 
+query: CREATE INDEX "ix_term_1" ON "terminologies" ("domain_id") 
+query: CREATE UNIQUE INDEX "ix_term_0" ON "terminologies" ("domain_id", "locale", "category", "name") 
+query: DROP INDEX "ix_publisher_2"
+query: DROP INDEX "ix_publisher_1"
+query: DROP INDEX "ix_publisher_0"
+query: CREATE TABLE "temporary_publishers" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "interval_expr" varchar(80), "api_url" varchar, "timezone" varchar, "repeat_count" integer, "status" int2, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "UQ_39082806f986a63cd7dcf1782a5" UNIQUE ("name"), CONSTRAINT "FK_5e21c078afd61cbfca5195cedd7" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_92d7225ac9cd969a240478d6e48" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_fca54c07373b46116eeb9c992e9" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_publishers"("id", "name", "description", "interval_expr", "api_url", "timezone", "repeat_count", "status", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "interval_expr", "api_url", "timezone", "repeat_count", "status", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "publishers"
+query: DROP TABLE "publishers"
+query: ALTER TABLE "temporary_publishers" RENAME TO "publishers"
+query: CREATE INDEX "ix_publisher_2" ON "publishers" ("domain_id", "api_url") 
+query: CREATE INDEX "ix_publisher_1" ON "publishers" ("domain_id", "status") 
+query: CREATE UNIQUE INDEX "ix_publisher_0" ON "publishers" ("domain_id", "name") 
+query: DROP INDEX "ix_favorite_0"
+query: CREATE TABLE "temporary_favorites" ("id" varchar PRIMARY KEY NOT NULL, "user_id" varchar NOT NULL, "routing" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_ca09f4d10feaa46afa09b380eed" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_0c036d090f9939aea9393ed4fbd" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_7fa820acc298552612824d54908" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_favorites"("id", "user_id", "routing", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "user_id", "routing", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "favorites"
+query: DROP TABLE "favorites"
+query: ALTER TABLE "temporary_favorites" RENAME TO "favorites"
+query: CREATE UNIQUE INDEX "ix_favorite_0" ON "favorites" ("domain_id", "user_id", "routing") 
+query: DROP INDEX "ix_common_code_detail_1"
+query: DROP INDEX "ix_common_code_detail_0"
+query: CREATE TABLE "temporary_common_code_details" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar NOT NULL, "rank" integer NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "common_code_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_5fcd5fdfb4282efa82339bd755c" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_3aacc603da5adf0e95e59a10637" FOREIGN KEY ("common_code_id") REFERENCES "common_codes" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_f5a0366bc1b15ef145f800fefbf" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_dd771523f6eb49a6e4887626daa" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_common_code_details"("id", "name", "description", "rank", "created_at", "updated_at", "domain_id", "common_code_id", "creator_id", "updater_id") SELECT "id", "name", "description", "rank", "created_at", "updated_at", "domain_id", "common_code_id", "creator_id", "updater_id" FROM "common_code_details"
+query: DROP TABLE "common_code_details"
+query: ALTER TABLE "temporary_common_code_details" RENAME TO "common_code_details"
+query: CREATE UNIQUE INDEX "ix_common_code_detail_1" ON "common_code_details" ("common_code_id", "rank") 
+query: CREATE UNIQUE INDEX "ix_common_code_detail_0" ON "common_code_details" ("common_code_id", "name") 
+query: DROP INDEX "ix_common_code_1"
+query: DROP INDEX "ix_common_code_0"
+query: CREATE TABLE "temporary_common_codes" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_5091cc920b757361cc677cfb419" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_16c748e594897b71c0ff2345ae9" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_307f611993865615255c016b356" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_common_codes"("id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "common_codes"
+query: DROP TABLE "common_codes"
+query: ALTER TABLE "temporary_common_codes" RENAME TO "common_codes"
+query: CREATE INDEX "ix_common_code_1" ON "common_codes" ("domain_id") 
+query: CREATE UNIQUE INDEX "ix_common_code_0" ON "common_codes" ("domain_id", "name") 
+query: DROP INDEX "ix_setting_1"
+query: DROP INDEX "ix_setting_0"
+query: CREATE TABLE "temporary_settings" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar NOT NULL, "category" varchar NOT NULL, "value" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar NOT NULL, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_cef5429e523e9b22160242f00af" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_bc7cfe188a55a9bb92b9de28451" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_0defc7258b2a5439f842f67e0d1" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_settings"("id", "name", "description", "category", "value", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") SELECT "id", "name", "description", "category", "value", "created_at", "updated_at", "domain_id", "creator_id", "updater_id" FROM "settings"
+query: DROP TABLE "settings"
+query: ALTER TABLE "temporary_settings" RENAME TO "settings"
+query: CREATE INDEX "ix_setting_1" ON "settings" ("domain_id", "category") 
+query: CREATE UNIQUE INDEX "ix_setting_0" ON "settings" ("domain_id", "name") 
+query: DROP INDEX "ix_menu_button_1"
+query: DROP INDEX "ix_menu_button_0"
+query: CREATE TABLE "temporary_menu_buttons" ("id" varchar PRIMARY KEY NOT NULL, "rank" integer, "style" varchar, "icon" varchar, "text" varchar NOT NULL, "auth" varchar, "logic" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_da2994b1f48266e67c0f860b5a7" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_c9a81b4bb503f983b26f8a121a0" FOREIGN KEY ("menu_id") REFERENCES "menus" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_499500388307c0c4a2198877a65" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_ecd9228ca9993c12802c084e6b1" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_menu_buttons"("id", "rank", "style", "icon", "text", "auth", "logic", "created_at", "updated_at", "domain_id", "menu_id", "creator_id", "updater_id") SELECT "id", "rank", "style", "icon", "text", "auth", "logic", "created_at", "updated_at", "domain_id", "menu_id", "creator_id", "updater_id" FROM "menu_buttons"
+query: DROP TABLE "menu_buttons"
+query: ALTER TABLE "temporary_menu_buttons" RENAME TO "menu_buttons"
+query: CREATE INDEX "ix_menu_button_1" ON "menu_buttons" ("menu_id") 
+query: CREATE UNIQUE INDEX "ix_menu_button_0" ON "menu_buttons" ("menu_id", "text") 
+query: DROP INDEX "ix_menu_column_1"
+query: DROP INDEX "ix_menu_column_0"
+query: CREATE TABLE "temporary_menu_columns" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "rank" integer, "term" varchar, "col_type" varchar NOT NULL, "col_size" integer, "nullable" boolean NOT NULL DEFAULT (1), "ref_type" varchar, "ref_name" varchar, "ref_url" varchar, "ref_params" varchar, "ref_related" varchar, "search_rank" integer, "sort_rank" integer, "reverse_sort" boolean, "virtual_field" boolean, "ext_field" boolean, "search_name" varchar, "search_editor" varchar, "search_oper" varchar, "search_init_val" varchar, "grid_rank" integer, "grid_editor" varchar, "grid_format" varchar, "grid_validator" varchar, "grid_width" integer, "grid_align" varchar, "uniq_rank" integer, "form_editor" varchar, "form_validator" varchar, "form_format" varchar, "def_val" varchar, "range_val" varchar, "ignore_on_save" boolean NOT NULL DEFAULT (0), "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_4c21d22ffc7dee6d4a9dc8be300" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_6b153279c77f501483151a2f49c" FOREIGN KEY ("menu_id") REFERENCES "menus" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_a1fc8edb40b0e2754247b51f8e3" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_c1c0763a962b60445929d62c8d9" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_menu_columns"("id", "name", "description", "rank", "term", "col_type", "col_size", "nullable", "ref_type", "ref_name", "ref_url", "ref_params", "ref_related", "search_rank", "sort_rank", "reverse_sort", "virtual_field", "ext_field", "search_name", "search_editor", "search_oper", "search_init_val", "grid_rank", "grid_editor", "grid_format", "grid_validator", "grid_width", "grid_align", "uniq_rank", "form_editor", "form_validator", "form_format", "def_val", "range_val", "ignore_on_save", "created_at", "updated_at", "domain_id", "menu_id", "creator_id", "updater_id") SELECT "id", "name", "description", "rank", "term", "col_type", "col_size", "nullable", "ref_type", "ref_name", "ref_url", "ref_params", "ref_related", "search_rank", "sort_rank", "reverse_sort", "virtual_field", "ext_field", "search_name", "search_editor", "search_oper", "search_init_val", "grid_rank", "grid_editor", "grid_format", "grid_validator", "grid_width", "grid_align", "uniq_rank", "form_editor", "form_validator", "form_format", "def_val", "range_val", "ignore_on_save", "created_at", "updated_at", "domain_id", "menu_id", "creator_id", "updater_id" FROM "menu_columns"
+query: DROP TABLE "menu_columns"
+query: ALTER TABLE "temporary_menu_columns" RENAME TO "menu_columns"
+query: CREATE INDEX "ix_menu_column_1" ON "menu_columns" ("menu_id", "rank") 
+query: CREATE UNIQUE INDEX "ix_menu_column_0" ON "menu_columns" ("domain_id", "menu_id", "name") 
+query: DROP INDEX "ix_menu_2"
+query: DROP INDEX "ix_menu_1"
+query: DROP INDEX "ix_menu_0"
+query: CREATE TABLE "temporary_menus" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "template" varchar, "menu_type" varchar, "category" varchar, "rank" integer, "icon_path" varchar, "hidden_flag" boolean, "routing" varchar, "routing_type" varchar, "detail_form_id" varchar, "detail_layout" varchar, "resource_type" varchar, "resource_name" varchar, "resource_url" varchar, "grid_save_url" varchar, "id_field" varchar, "title_field" varchar, "pagination" boolean, "items_prop" varchar, "total_prop" varchar, "fixed_columns" integer, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "parent_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_4185aca83e77defa506978b603c" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_00ccc1ed4e9fc23bc1246269359" FOREIGN KEY ("parent_id") REFERENCES "menus" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_b158fa4e9df3bb3743605445f26" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_d98c5af4ab7f689d587a90cb58b" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_menus"("id", "name", "description", "template", "menu_type", "category", "rank", "icon_path", "hidden_flag", "routing", "routing_type", "detail_form_id", "detail_layout", "resource_type", "resource_name", "resource_url", "grid_save_url", "id_field", "title_field", "pagination", "items_prop", "total_prop", "fixed_columns", "created_at", "updated_at", "domain_id", "parent_id", "creator_id", "updater_id") SELECT "id", "name", "description", "template", "menu_type", "category", "rank", "icon_path", "hidden_flag", "routing", "routing_type", "detail_form_id", "detail_layout", "resource_type", "resource_name", "resource_url", "grid_save_url", "id_field", "title_field", "pagination", "items_prop", "total_prop", "fixed_columns", "created_at", "updated_at", "domain_id", "parent_id", "creator_id", "updater_id" FROM "menus"
+query: DROP TABLE "menus"
+query: ALTER TABLE "temporary_menus" RENAME TO "menus"
+query: CREATE INDEX "ix_menu_2" ON "menus" ("domain_id", "category", "menu_type", "rank") 
+query: CREATE INDEX "ix_menu_1" ON "menus" ("domain_id", "parent_id") 
+query: CREATE UNIQUE INDEX "ix_menu_0" ON "menus" ("domain_id", "name") 
+query: DROP INDEX "ix_menu_detail_btn_1"
+query: DROP INDEX "ix_menu_detail_btn_0"
+query: CREATE TABLE "temporary_menu_detail_buttons" ("id" varchar PRIMARY KEY NOT NULL, "text" varchar NOT NULL, "rank" integer, "icon" varchar, "style" varchar, "logic" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_detail_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_049c8acc8e8d2f8e7fd22da7289" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_43e92dd546f6997af3aaca68d8d" FOREIGN KEY ("menu_detail_id") REFERENCES "menu_details" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_ff5cee5f2cb8d1258eaa758bf4d" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_39ac1995acee9fefbcdabc31633" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_menu_detail_buttons"("id", "text", "rank", "icon", "style", "logic", "created_at", "updated_at", "domain_id", "menu_detail_id", "creator_id", "updater_id") SELECT "id", "text", "rank", "icon", "style", "logic", "created_at", "updated_at", "domain_id", "menu_detail_id", "creator_id", "updater_id" FROM "menu_detail_buttons"
+query: DROP TABLE "menu_detail_buttons"
+query: ALTER TABLE "temporary_menu_detail_buttons" RENAME TO "menu_detail_buttons"
+query: CREATE INDEX "ix_menu_detail_btn_1" ON "menu_detail_buttons" ("menu_detail_id") 
+query: CREATE UNIQUE INDEX "ix_menu_detail_btn_0" ON "menu_detail_buttons" ("menu_detail_id", "text") 
+query: DROP INDEX "ix_menu_detail_col_1"
+query: DROP INDEX "ix_menu_detail_col_0"
+query: CREATE TABLE "temporary_menu_detail_columns" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "rank" integer, "term" varchar, "col_type" varchar NOT NULL, "col_size" integer, "nullable" boolean, "ref_type" varchar, "ref_name" varchar, "ref_url" varchar, "ref_params" varchar, "ref_related" varchar, "search_rank" integer, "sort_rank" integer, "reverse_sort" boolean, "virtual_field" boolean, "search_name" varchar, "search_editor" varchar, "search_oper" varchar, "search_init_val" varchar, "grid_rank" integer, "grid_editor" varchar, "grid_format" varchar, "grid_validator" varchar, "grid_width" integer, "grid_align" varchar, "uniq_rank" integer, "form_editor" varchar, "form_validator" varchar, "form_format" varchar, "def_val" varchar, "range_val" varchar, "ignore_on_save" boolean, "ext_field" boolean, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_detail_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_77dc04be86a1e2a02276943c0ca" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_65a425a572dbbaebc6e9716eafe" FOREIGN KEY ("menu_detail_id") REFERENCES "menu_details" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_d884ee7fad9c882bf84b985689c" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_042b176c394622f952ac77d0125" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_menu_detail_columns"("id", "name", "description", "rank", "term", "col_type", "col_size", "nullable", "ref_type", "ref_name", "ref_url", "ref_params", "ref_related", "search_rank", "sort_rank", "reverse_sort", "virtual_field", "search_name", "search_editor", "search_oper", "search_init_val", "grid_rank", "grid_editor", "grid_format", "grid_validator", "grid_width", "grid_align", "uniq_rank", "form_editor", "form_validator", "form_format", "def_val", "range_val", "ignore_on_save", "ext_field", "created_at", "updated_at", "domain_id", "menu_detail_id", "creator_id", "updater_id") SELECT "id", "name", "description", "rank", "term", "col_type", "col_size", "nullable", "ref_type", "ref_name", "ref_url", "ref_params", "ref_related", "search_rank", "sort_rank", "reverse_sort", "virtual_field", "search_name", "search_editor", "search_oper", "search_init_val", "grid_rank", "grid_editor", "grid_format", "grid_validator", "grid_width", "grid_align", "uniq_rank", "form_editor", "form_validator", "form_format", "def_val", "range_val", "ignore_on_save", "ext_field", "created_at", "updated_at", "domain_id", "menu_detail_id", "creator_id", "updater_id" FROM "menu_detail_columns"
+query: DROP TABLE "menu_detail_columns"
+query: ALTER TABLE "temporary_menu_detail_columns" RENAME TO "menu_detail_columns"
+query: CREATE INDEX "ix_menu_detail_col_1" ON "menu_detail_columns" ("menu_detail_id", "rank") 
+query: CREATE UNIQUE INDEX "ix_menu_detail_col_0" ON "menu_detail_columns" ("menu_detail_id", "name") 
+query: DROP INDEX "ix_menu_detail_1"
+query: DROP INDEX "ix_menu_detail_0"
+query: CREATE TABLE "temporary_menu_details" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "view_section" varchar NOT NULL, "entity_id" varchar, "data_prop" varchar, "association" varchar, "search_url" varchar, "save_url" varchar, "master_field" varchar, "custom_view" varchar, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "menu_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "REL_72d09a2e9dcb1ff5536273c94e" UNIQUE ("menu_id"), CONSTRAINT "FK_2617bea70d50c962ef3fed00d54" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_72d09a2e9dcb1ff5536273c94e7" FOREIGN KEY ("menu_id") REFERENCES "menus" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_29d644ecbd89fbd5ad2167d04dc" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_0db9338533ff0c0990965e9836b" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_menu_details"("id", "name", "view_section", "entity_id", "data_prop", "association", "search_url", "save_url", "master_field", "custom_view", "created_at", "updated_at", "domain_id", "menu_id", "creator_id", "updater_id") SELECT "id", "name", "view_section", "entity_id", "data_prop", "association", "search_url", "save_url", "master_field", "custom_view", "created_at", "updated_at", "domain_id", "menu_id", "creator_id", "updater_id" FROM "menu_details"
+query: DROP TABLE "menu_details"
+query: ALTER TABLE "temporary_menu_details" RENAME TO "menu_details"
+query: CREATE INDEX "ix_menu_detail_1" ON "menu_details" ("menu_id") 
+query: CREATE UNIQUE INDEX "ix_menu_detail_0" ON "menu_details" ("menu_id", "name") 
+query: DROP INDEX "ix_entity_col_1"
+query: DROP INDEX "ix_entity_col_0"
+query: CREATE TABLE "temporary_entity_columns" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "rank" integer, "term" varchar, "col_type" varchar NOT NULL, "col_size" integer, "nullable" boolean DEFAULT (1), "ref_type" varchar, "ref_name" varchar, "ref_url" varchar, "ref_params" varchar, "ref_related" varchar, "search_rank" integer, "sort_rank" integer, "reverse_sort" boolean DEFAULT (0), "virtual_field" boolean DEFAULT (0), "search_name" varchar, "search_editor" varchar, "search_oper" varchar, "search_init_val" varchar, "grid_rank" integer, "grid_editor" varchar, "grid_format" varchar, "grid_validator" varchar, "grid_width" integer, "grid_align" varchar, "uniq_rank" integer, "form_editor" varchar, "form_validator" varchar, "form_format" varchar, "def_val" varchar, "range_val" varchar, "ignore_on_sav" boolean DEFAULT (0), "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "entity_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_46e3a32a1a5f926eeb2c059e57e" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_26455c003c08fe0869d56f1a598" FOREIGN KEY ("entity_id") REFERENCES "entities" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_dc6b0f20f75ceaf64efc16e9357" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_2b13013a08c1822a5c424f86eaa" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_entity_columns"("id", "name", "description", "rank", "term", "col_type", "col_size", "nullable", "ref_type", "ref_name", "ref_url", "ref_params", "ref_related", "search_rank", "sort_rank", "reverse_sort", "virtual_field", "search_name", "search_editor", "search_oper", "search_init_val", "grid_rank", "grid_editor", "grid_format", "grid_validator", "grid_width", "grid_align", "uniq_rank", "form_editor", "form_validator", "form_format", "def_val", "range_val", "ignore_on_sav", "created_at", "updated_at", "domain_id", "entity_id", "creator_id", "updater_id") SELECT "id", "name", "description", "rank", "term", "col_type", "col_size", "nullable", "ref_type", "ref_name", "ref_url", "ref_params", "ref_related", "search_rank", "sort_rank", "reverse_sort", "virtual_field", "search_name", "search_editor", "search_oper", "search_init_val", "grid_rank", "grid_editor", "grid_format", "grid_validator", "grid_width", "grid_align", "uniq_rank", "form_editor", "form_validator", "form_format", "def_val", "range_val", "ignore_on_sav", "created_at", "updated_at", "domain_id", "entity_id", "creator_id", "updater_id" FROM "entity_columns"
+query: DROP TABLE "entity_columns"
+query: ALTER TABLE "temporary_entity_columns" RENAME TO "entity_columns"
+query: CREATE INDEX "ix_entity_col_1" ON "entity_columns" ("entity_id", "rank") 
+query: CREATE UNIQUE INDEX "ix_entity_col_0" ON "entity_columns" ("entity_id", "name") 
+query: DROP INDEX "ix_entity_3"
+query: DROP INDEX "ix_entity_2"
+query: DROP INDEX "ix_entity_1"
+query: DROP INDEX "ix_entity_0"
+query: CREATE TABLE "temporary_entities" ("id" varchar PRIMARY KEY NOT NULL, "name" varchar NOT NULL, "description" varchar, "bundle" varchar NOT NULL, "table_name" varchar NOT NULL, "search_url" varchar, "multi_save_url" varchar, "id_type" varchar, "id_field" varchar, "title_field" varchar, "association" varchar, "data_prop" varchar, "ref_field" varchar, "del_strategy" varchar, "fixed_columns" integer, "active" boolean NOT NULL DEFAULT (1), "ext_entity" boolean, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "domain_id" varchar, "master_id" varchar, "creator_id" varchar, "updater_id" varchar, CONSTRAINT "FK_a8c058ded40a285b3363d8cf51c" FOREIGN KEY ("domain_id") REFERENCES "domains" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_be578728ab5d72f43ba5d0c0a69" FOREIGN KEY ("master_id") REFERENCES "entities" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_1b1a928254a498389a2b6c18dc9" FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT "FK_09f5e2bbbbce470dcc43e811347" FOREIGN KEY ("updater_id") REFERENCES "users" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION)
+query: INSERT INTO "temporary_entities"("id", "name", "description", "bundle", "table_name", "search_url", "multi_save_url", "id_type", "id_field", "title_field", "association", "data_prop", "ref_field", "del_strategy", "fixed_columns", "active", "ext_entity", "created_at", "updated_at", "domain_id", "master_id", "creator_id", "updater_id") SELECT "id", "name", "description", "bundle", "table_name", "search_url", "multi_save_url", "id_type", "id_field", "title_field", "association", "data_prop", "ref_field", "del_strategy", "fixed_columns", "active", "ext_entity", "created_at", "updated_at", "domain_id", "master_id", "creator_id", "updater_id" FROM "entities"
+query: DROP TABLE "entities"
+query: ALTER TABLE "temporary_entities" RENAME TO "entities"
+query: CREATE INDEX "ix_entity_3" ON "entities" ("domain_id", "master_id") 
+query: CREATE INDEX "ix_entity_2" ON "entities" ("bundle") 
+query: CREATE INDEX "ix_entity_1" ON "entities" ("domain_id") 
+query: CREATE UNIQUE INDEX "ix_entity_0" ON "entities" ("domain_id", "name") 
+query: DROP INDEX "IDX_c7f704a26d8958c1cfe70ddd40"
+query: DROP INDEX "IDX_da1d04ed7d0b1f0e0eb2c66b1a"
+query: CREATE TABLE "temporary_roles_priviledges" ("roles_id" varchar NOT NULL, "priviledges_id" varchar NOT NULL, CONSTRAINT "FK_c7f704a26d8958c1cfe70ddd401" FOREIGN KEY ("roles_id") REFERENCES "roles" ("id") ON DELETE CASCADE ON UPDATE NO ACTION, CONSTRAINT "FK_da1d04ed7d0b1f0e0eb2c66b1ad" FOREIGN KEY ("priviledges_id") REFERENCES "priviledges" ("id") ON DELETE CASCADE ON UPDATE NO ACTION, PRIMARY KEY ("roles_id", "priviledges_id"))
+query: INSERT INTO "temporary_roles_priviledges"("roles_id", "priviledges_id") SELECT "roles_id", "priviledges_id" FROM "roles_priviledges"
+query: DROP TABLE "roles_priviledges"
+query: ALTER TABLE "temporary_roles_priviledges" RENAME TO "roles_priviledges"
+query: CREATE INDEX "IDX_c7f704a26d8958c1cfe70ddd40" ON "roles_priviledges" ("roles_id") 
+query: CREATE INDEX "IDX_da1d04ed7d0b1f0e0eb2c66b1a" ON "roles_priviledges" ("priviledges_id") 
+query: DROP INDEX "IDX_526b3212bf7fe24901b6c210ff"
+query: DROP INDEX "IDX_6ea0f04cc168ae7e2377ffc8d7"
+query: CREATE TABLE "temporary_users_domains" ("users_id" varchar NOT NULL, "domains_id" varchar NOT NULL, CONSTRAINT "FK_526b3212bf7fe24901b6c210ffa" FOREIGN KEY ("users_id") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION, CONSTRAINT "FK_6ea0f04cc168ae7e2377ffc8d7e" FOREIGN KEY ("domains_id") REFERENCES "domains" ("id") ON DELETE CASCADE ON UPDATE NO ACTION, PRIMARY KEY ("users_id", "domains_id"))
+query: INSERT INTO "temporary_users_domains"("users_id", "domains_id") SELECT "users_id", "domains_id" FROM "users_domains"
+query: DROP TABLE "users_domains"
+query: ALTER TABLE "temporary_users_domains" RENAME TO "users_domains"
+query: CREATE INDEX "IDX_526b3212bf7fe24901b6c210ff" ON "users_domains" ("users_id") 
+query: CREATE INDEX "IDX_6ea0f04cc168ae7e2377ffc8d7" ON "users_domains" ("domains_id") 
+query: DROP INDEX "IDX_259b5a2e24d0a5480262a774e4"
+query: DROP INDEX "IDX_ed1bb3304475cfa49b2964aaf2"
+query: CREATE TABLE "temporary_users_roles" ("users_id" varchar NOT NULL, "roles_id" varchar NOT NULL, CONSTRAINT "FK_259b5a2e24d0a5480262a774e46" FOREIGN KEY ("users_id") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE NO ACTION, CONSTRAINT "FK_ed1bb3304475cfa49b2964aaf27" FOREIGN KEY ("roles_id") REFERENCES "roles" ("id") ON DELETE CASCADE ON UPDATE NO ACTION, PRIMARY KEY ("users_id", "roles_id"))
+query: INSERT INTO "temporary_users_roles"("users_id", "roles_id") SELECT "users_id", "roles_id" FROM "users_roles"
+query: DROP TABLE "users_roles"
+query: ALTER TABLE "temporary_users_roles" RENAME TO "users_roles"
+query: CREATE INDEX "IDX_259b5a2e24d0a5480262a774e4" ON "users_roles" ("users_id") 
+query: CREATE INDEX "IDX_ed1bb3304475cfa49b2964aaf2" ON "users_roles" ("roles_id") 
+query: DROP INDEX "IDX_1d0c7c9ac6c4c6de23e3d9c781"
+query: DROP INDEX "IDX_ad3fcb2d67679ee10b39382a22"
+query: CREATE TABLE "temporary_play_groups_boards" ("play_groups_id" varchar NOT NULL, "boards_id" varchar NOT NULL, CONSTRAINT "FK_1d0c7c9ac6c4c6de23e3d9c7810" FOREIGN KEY ("play_groups_id") REFERENCES "play_groups" ("id") ON DELETE CASCADE ON UPDATE NO ACTION, CONSTRAINT "FK_ad3fcb2d67679ee10b39382a222" FOREIGN KEY ("boards_id") REFERENCES "boards" ("id") ON DELETE CASCADE ON UPDATE NO ACTION, PRIMARY KEY ("play_groups_id", "boards_id"))
+query: INSERT INTO "temporary_play_groups_boards"("play_groups_id", "boards_id") SELECT "play_groups_id", "boards_id" FROM "play_groups_boards"
+query: DROP TABLE "play_groups_boards"
+query: ALTER TABLE "temporary_play_groups_boards" RENAME TO "play_groups_boards"
+query: CREATE INDEX "IDX_1d0c7c9ac6c4c6de23e3d9c781" ON "play_groups_boards" ("play_groups_id") 
+query: CREATE INDEX "IDX_ad3fcb2d67679ee10b39382a22" ON "play_groups_boards" ("boards_id") 
+query: COMMIT
+Database connection established
+query: SELECT * FROM "sqlite_master" WHERE "type" = 'table' AND "name" = 'migrations'
+query: CREATE TABLE "migrations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "timestamp" bigint NOT NULL, "name" varchar NOT NULL)
+query: SELECT * FROM "migrations" "migrations" ORDER BY id DESC
+query: BEGIN TRANSACTION
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1000000000000,"SeedDomain1000000000000"]
+query: INSERT INTO "domains"("id", "name", "description", "timezone", "system_flag", "subdomain", "brand_name", "brand_image", "content_image", "theme", "created_at", "updated_at") VALUES (?, ?, NULL, NULL, ?, ?, NULL, NULL, NULL, NULL, datetime('now'), datetime('now')) -- PARAMETERS: ["c6570dfa-6e94-44e2-b453-c78906885b4d","SYSTEM",1,"system"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."name" AS "Domain_name", "Domain"."description" AS "Domain_description", "Domain"."timezone" AS "Domain_timezone", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."subdomain" AS "Domain_subdomain", "Domain"."brand_name" AS "Domain_brand_name", "Domain"."brand_image" AS "Domain_brand_image", "Domain"."content_image" AS "Domain_content_image", "Domain"."theme" AS "Domain_theme", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain" WHERE "Domain"."name" = ? LIMIT 1 -- PARAMETERS: ["SYSTEM"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain" WHERE "Domain"."id" = ? -- PARAMETERS: ["c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: INSERT INTO "users"("id", "name", "description", "email", "password", "user_type", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, NULL, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["2106e795-33c2-44e0-a24d-42aca8022eea","Admin","admin@hatiolab.com","bpOfPB2MjTZrKsiFONJwpap38GI=","admin","c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: SELECT "User"."id" AS "User_id", "User"."created_at" AS "User_created_at", "User"."updated_at" AS "User_updated_at" FROM "users" "User" WHERE "User"."id" = ? -- PARAMETERS: ["2106e795-33c2-44e0-a24d-42aca8022eea"]
+query: INSERT INTO "users_domains"("users_id", "domains_id") VALUES (?, ?) -- PARAMETERS: ["2106e795-33c2-44e0-a24d-42aca8022eea","c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1525758367829,"SeedUsers1525758367829"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."name" AS "Domain_name", "Domain"."description" AS "Domain_description", "Domain"."timezone" AS "Domain_timezone", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."subdomain" AS "Domain_subdomain", "Domain"."brand_name" AS "Domain_brand_name", "Domain"."brand_image" AS "Domain_brand_image", "Domain"."content_image" AS "Domain_content_image", "Domain"."theme" AS "Domain_theme", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain" WHERE "Domain"."name" = ? LIMIT 1 -- PARAMETERS: ["SYSTEM"]
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1556862253039,"seedFonts1556862253039"]
+query: INSERT INTO "fonts"("id", "name", "provider", "uri", "path", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["6fdd5cf5-7130-4778-a425-0f7c6c6e9a7a","Roboto","google","","",0,"c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: INSERT INTO "fonts"("id", "name", "provider", "uri", "path", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["e1e50a75-4a44-4a7e-8d79-6492303753e0","Pangolin","google","","",0,"c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: INSERT INTO "fonts"("id", "name", "provider", "uri", "path", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["a9337ad2-a4e4-448a-8ffe-bf3e2fff3599","Railway","google","","",0,"c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: INSERT INTO "fonts"("id", "name", "provider", "uri", "path", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["babb0909-66f2-41ba-abd8-3720ec528829","Slabo","google","","",0,"c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: INSERT INTO "fonts"("id", "name", "provider", "uri", "path", "active", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["aad79600-30a2-453e-bf3c-7c9bf5213a8c","Skranji","google","","",0,"c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: INSERT INTO "domains"("id", "name", "description", "timezone", "system_flag", "subdomain", "brand_name", "brand_image", "content_image", "theme", "created_at", "updated_at") VALUES (?, ?, NULL, NULL, ?, ?, NULL, NULL, NULL, NULL, datetime('now'), datetime('now')) -- PARAMETERS: ["f7b6eea9-8355-4c05-ba91-51f2374e39b5","DEMO",0,"demo"]
+query: SELECT "Font"."id" AS "Font_id", "Font"."created_at" AS "Font_created_at", "Font"."updated_at" AS "Font_updated_at" FROM "fonts" "Font" WHERE "Font"."id" = ? -- PARAMETERS: ["e1e50a75-4a44-4a7e-8d79-6492303753e0"]
+query: SELECT "Font"."id" AS "Font_id", "Font"."created_at" AS "Font_created_at", "Font"."updated_at" AS "Font_updated_at" FROM "fonts" "Font" WHERE "Font"."id" = ? -- PARAMETERS: ["aad79600-30a2-453e-bf3c-7c9bf5213a8c"]
+query: SELECT "Font"."id" AS "Font_id", "Font"."created_at" AS "Font_created_at", "Font"."updated_at" AS "Font_updated_at" FROM "fonts" "Font" WHERE "Font"."id" = ? -- PARAMETERS: ["a9337ad2-a4e4-448a-8ffe-bf3e2fff3599"]
+query: SELECT "Font"."id" AS "Font_id", "Font"."created_at" AS "Font_created_at", "Font"."updated_at" AS "Font_updated_at" FROM "fonts" "Font" WHERE "Font"."id" = ? -- PARAMETERS: ["babb0909-66f2-41ba-abd8-3720ec528829"]
+query: SELECT "Font"."id" AS "Font_id", "Font"."created_at" AS "Font_created_at", "Font"."updated_at" AS "Font_updated_at" FROM "fonts" "Font" WHERE "Font"."id" = ? -- PARAMETERS: ["6fdd5cf5-7130-4778-a425-0f7c6c6e9a7a"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain" WHERE "Domain"."id" = ? -- PARAMETERS: ["f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: SELECT DISTINCT "distinctAlias"."User_id" as "ids_User_id" FROM (SELECT "User"."id" AS "User_id", "User"."name" AS "User_name", "User"."description" AS "User_description", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."user_type" AS "User_user_type", "User"."created_at" AS "User_created_at", "User"."updated_at" AS "User_updated_at", "User"."domain_id" AS "User_domain_id", "User"."creator_id" AS "User_creator_id", "User"."updater_id" AS "User_updater_id", "User__domains"."id" AS "User__domains_id", "User__domains"."name" AS "User__domains_name", "User__domains"."description" AS "User__domains_description", "User__domains"."timezone" AS "User__domains_timezone", "User__domains"."system_flag" AS "User__domains_system_flag", "User__domains"."subdomain" AS "User__domains_subdomain", "User__domains"."brand_name" AS "User__domains_brand_name", "User__domains"."brand_image" AS "User__domains_brand_image", "User__domains"."content_image" AS "User__domains_content_image", "User__domains"."theme" AS "User__domains_theme", "User__domains"."created_at" AS "User__domains_created_at", "User__domains"."updated_at" AS "User__domains_updated_at" FROM "users" "User" LEFT JOIN "users_domains" "User_User__domains" ON "User_User__domains"."users_id"="User"."id" LEFT JOIN "domains" "User__domains" ON "User__domains"."id"="User_User__domains"."domains_id" WHERE "User"."email" = ?) "distinctAlias" ORDER BY "User_id" ASC LIMIT 1 -- PARAMETERS: ["admin@hatiolab.com"]
+query: SELECT "User"."id" AS "User_id", "User"."name" AS "User_name", "User"."description" AS "User_description", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."user_type" AS "User_user_type", "User"."created_at" AS "User_created_at", "User"."updated_at" AS "User_updated_at", "User"."domain_id" AS "User_domain_id", "User"."creator_id" AS "User_creator_id", "User"."updater_id" AS "User_updater_id", "User__domains"."id" AS "User__domains_id", "User__domains"."name" AS "User__domains_name", "User__domains"."description" AS "User__domains_description", "User__domains"."timezone" AS "User__domains_timezone", "User__domains"."system_flag" AS "User__domains_system_flag", "User__domains"."subdomain" AS "User__domains_subdomain", "User__domains"."brand_name" AS "User__domains_brand_name", "User__domains"."brand_image" AS "User__domains_brand_image", "User__domains"."content_image" AS "User__domains_content_image", "User__domains"."theme" AS "User__domains_theme", "User__domains"."created_at" AS "User__domains_created_at", "User__domains"."updated_at" AS "User__domains_updated_at" FROM "users" "User" LEFT JOIN "users_domains" "User_User__domains" ON "User_User__domains"."users_id"="User"."id" LEFT JOIN "domains" "User__domains" ON "User__domains"."id"="User_User__domains"."domains_id" WHERE ("User"."email" = ?) AND "User"."id" IN (?) -- PARAMETERS: ["admin@hatiolab.com","2106e795-33c2-44e0-a24d-42aca8022eea"]
+query: SELECT "User"."id" AS "User_id", "User"."name" AS "User_name", "User"."description" AS "User_description", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."user_type" AS "User_user_type", "User"."created_at" AS "User_created_at", "User"."updated_at" AS "User_updated_at", "User"."domain_id" AS "User_domain_id", "User"."creator_id" AS "User_creator_id", "User"."updater_id" AS "User_updater_id" FROM "users" "User" WHERE "User"."id" IN (?) -- PARAMETERS: ["2106e795-33c2-44e0-a24d-42aca8022eea"]
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1558006504001,"SeedDemoDomain1558006504001"]
+query: SELECT "User_domains_rid"."users_id" AS "users_id", "User_domains_rid"."domains_id" AS "domains_id" FROM "domains" "domains" INNER JOIN "users_domains" "User_domains_rid" ON ("User_domains_rid"."users_id" = ? AND "User_domains_rid"."domains_id" = "domains"."id") ORDER BY "User_domains_rid"."domains_id" ASC, "User_domains_rid"."users_id" ASC -- PARAMETERS: ["2106e795-33c2-44e0-a24d-42aca8022eea"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."name" AS "Domain_name", "Domain"."description" AS "Domain_description", "Domain"."timezone" AS "Domain_timezone", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."subdomain" AS "Domain_subdomain", "Domain"."brand_name" AS "Domain_brand_name", "Domain"."brand_image" AS "Domain_brand_image", "Domain"."content_image" AS "Domain_content_image", "Domain"."theme" AS "Domain_theme", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain" WHERE "Domain"."name" = ? LIMIT 1 -- PARAMETERS: ["DEMO"]
+query: INSERT INTO "users_domains"("users_id", "domains_id") VALUES (?, ?) -- PARAMETERS: ["2106e795-33c2-44e0-a24d-42aca8022eea","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."name" AS "Group_name", "Group"."description" AS "Group_description", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at", "Group"."domain_id" AS "Group_domain_id", "Group"."creator_id" AS "Group_creator_id", "Group"."updater_id" AS "Group_updater_id" FROM "groups" "Group" WHERE "Group"."id" IN (?) -- PARAMETERS: ["fffe0fb6-90ed-4405-ae5a-43e0ee7e12ec"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."name" AS "Group_name", "Group"."description" AS "Group_description", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at", "Group"."domain_id" AS "Group_domain_id", "Group"."creator_id" AS "Group_creator_id", "Group"."updater_id" AS "Group_updater_id" FROM "groups" "Group" WHERE "Group"."id" IN (?) -- PARAMETERS: ["dbb0f731-dd06-4e70-8e7d-742adbfac5ee"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."name" AS "Group_name", "Group"."description" AS "Group_description", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at", "Group"."domain_id" AS "Group_domain_id", "Group"."creator_id" AS "Group_creator_id", "Group"."updater_id" AS "Group_updater_id" FROM "groups" "Group" WHERE "Group"."id" IN (?) -- PARAMETERS: ["10667d11-9b95-47c9-bd0f-788cd161c9a5"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."name" AS "Group_name", "Group"."description" AS "Group_description", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at", "Group"."domain_id" AS "Group_domain_id", "Group"."creator_id" AS "Group_creator_id", "Group"."updater_id" AS "Group_updater_id" FROM "groups" "Group" WHERE "Group"."id" IN (?) -- PARAMETERS: ["c385e355-6dfe-4386-a0cc-a7bbaa0e16f7"]
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1558006505982,"SeedGroup1558006505982"]
+query: INSERT INTO "groups"("id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["c385e355-6dfe-4386-a0cc-a7bbaa0e16f7","LOGISTICS","LOGISTICS","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."name" AS "Domain_name", "Domain"."description" AS "Domain_description", "Domain"."timezone" AS "Domain_timezone", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."subdomain" AS "Domain_subdomain", "Domain"."brand_name" AS "Domain_brand_name", "Domain"."brand_image" AS "Domain_brand_image", "Domain"."content_image" AS "Domain_content_image", "Domain"."theme" AS "Domain_theme", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain" WHERE "Domain"."name" = ? LIMIT 1 -- PARAMETERS: ["DEMO"]
+query: INSERT INTO "groups"("id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["10667d11-9b95-47c9-bd0f-788cd161c9a5","WAREHOUSE","WAREHOUSE","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: INSERT INTO "groups"("id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["fffe0fb6-90ed-4405-ae5a-43e0ee7e12ec","DASHBOARD","Dashboard","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: INSERT INTO "groups"("id", "name", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["dbb0f731-dd06-4e70-8e7d-742adbfac5ee","LABEL","LABEL","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at" FROM "groups" "Group" WHERE "Group"."id" = ? -- PARAMETERS: ["c385e355-6dfe-4386-a0cc-a7bbaa0e16f7"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at" FROM "groups" "Group" WHERE "Group"."id" = ? -- PARAMETERS: ["dbb0f731-dd06-4e70-8e7d-742adbfac5ee"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."name" AS "Group_name", "Group"."description" AS "Group_description", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at", "Group"."domain_id" AS "Group_domain_id", "Group"."creator_id" AS "Group_creator_id", "Group"."updater_id" AS "Group_updater_id" FROM "groups" "Group" WHERE "Group"."name" = ? LIMIT 1 -- PARAMETERS: ["SAMPLE"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at" FROM "groups" "Group" WHERE "Group"."id" = ? -- PARAMETERS: ["fffe0fb6-90ed-4405-ae5a-43e0ee7e12ec"]
+query: SELECT "Group"."id" AS "Group_id", "Group"."created_at" AS "Group_created_at", "Group"."updated_at" AS "Group_updated_at" FROM "groups" "Group" WHERE "Group"."id" = ? -- PARAMETERS: ["10667d11-9b95-47c9-bd0f-788cd161c9a5"]
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1558006512362,"Board1558006512362"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."name" AS "Domain_name", "Domain"."description" AS "Domain_description", "Domain"."timezone" AS "Domain_timezone", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."subdomain" AS "Domain_subdomain", "Domain"."brand_name" AS "Domain_brand_name", "Domain"."brand_image" AS "Domain_brand_image", "Domain"."content_image" AS "Domain_content_image", "Domain"."theme" AS "Domain_theme", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain" WHERE "Domain"."name" = ? LIMIT 1 -- PARAMETERS: ["DEMO"]
+query: SELECT "Board"."id" AS "Board_id", "Board"."name" AS "Board_name", "Board"."description" AS "Board_description", "Board"."model" AS "Board_model", "Board"."thumbnail" AS "Board_thumbnail", "Board"."created_at" AS "Board_created_at", "Board"."updated_at" AS "Board_updated_at", "Board"."domain_id" AS "Board_domain_id", "Board"."group_id" AS "Board_group_id", "Board"."creator_id" AS "Board_creator_id", "Board"."updater_id" AS "Board_updater_id" FROM "boards" "Board"
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1558009487900,"SeedPlayGroup1558009487900"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."name" AS "Domain_name", "Domain"."description" AS "Domain_description", "Domain"."timezone" AS "Domain_timezone", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."subdomain" AS "Domain_subdomain", "Domain"."brand_name" AS "Domain_brand_name", "Domain"."brand_image" AS "Domain_brand_image", "Domain"."content_image" AS "Domain_content_image", "Domain"."theme" AS "Domain_theme", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain"
+query: INSERT INTO "priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["352f23c0-7eab-4da9-acfb-c279a4c256fb","query","user","to read user data","c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: SELECT "Priviledge"."id" AS "Priviledge_id", "Priviledge"."created_at" AS "Priviledge_created_at", "Priviledge"."updated_at" AS "Priviledge_updated_at" FROM "priviledges" "Priviledge" WHERE "Priviledge"."id" = ? -- PARAMETERS: ["352f23c0-7eab-4da9-acfb-c279a4c256fb"]
+query: INSERT INTO "priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["e1969ca4-51c0-4472-9fad-4253fde659e4","mutation","user","to edit user data","c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: SELECT "Priviledge"."id" AS "Priviledge_id", "Priviledge"."created_at" AS "Priviledge_created_at", "Priviledge"."updated_at" AS "Priviledge_updated_at" FROM "priviledges" "Priviledge" WHERE "Priviledge"."id" = ? -- PARAMETERS: ["e1969ca4-51c0-4472-9fad-4253fde659e4"]
+query: INSERT INTO "priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["08c0c2b9-90e2-4156-9ceb-f2daaf87ef65","query","user","to read user data","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: SELECT "Priviledge"."id" AS "Priviledge_id", "Priviledge"."created_at" AS "Priviledge_created_at", "Priviledge"."updated_at" AS "Priviledge_updated_at" FROM "priviledges" "Priviledge" WHERE "Priviledge"."id" = ? -- PARAMETERS: ["08c0c2b9-90e2-4156-9ceb-f2daaf87ef65"]
+query: INSERT INTO "priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["f4da9f4c-45af-4268-b14a-079fc4315d4c","mutation","user","to edit user data","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: SELECT "Priviledge"."id" AS "Priviledge_id", "Priviledge"."created_at" AS "Priviledge_created_at", "Priviledge"."updated_at" AS "Priviledge_updated_at" FROM "priviledges" "Priviledge" WHERE "Priviledge"."id" = ? -- PARAMETERS: ["f4da9f4c-45af-4268-b14a-079fc4315d4c"]
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1566805283882,"SeedPriviledge1566805283882"]
+query: SELECT "Domain"."id" AS "Domain_id", "Domain"."name" AS "Domain_name", "Domain"."description" AS "Domain_description", "Domain"."timezone" AS "Domain_timezone", "Domain"."system_flag" AS "Domain_system_flag", "Domain"."subdomain" AS "Domain_subdomain", "Domain"."brand_name" AS "Domain_brand_name", "Domain"."brand_image" AS "Domain_brand_image", "Domain"."content_image" AS "Domain_content_image", "Domain"."theme" AS "Domain_theme", "Domain"."created_at" AS "Domain_created_at", "Domain"."updated_at" AS "Domain_updated_at" FROM "domains" "Domain"
+query: INSERT INTO "migrations"("timestamp", "name") VALUES (?, ?) -- PARAMETERS: [1567671344025,"SeedPriviledge1567671344025"]
+query: INSERT INTO "priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["80b2ad40-13a3-447c-8032-2ab2a0fa2b88","query","setting","to read setting data","c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: INSERT INTO "priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["bc6d989a-7dc2-4d08-a0f9-ae83414b38d9","query","setting","to read setting data","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: COMMIT
+query: SELECT "Priviledge"."id" AS "Priviledge_id", "Priviledge"."created_at" AS "Priviledge_created_at", "Priviledge"."updated_at" AS "Priviledge_updated_at" FROM "priviledges" "Priviledge" WHERE "Priviledge"."id" = ? -- PARAMETERS: ["80b2ad40-13a3-447c-8032-2ab2a0fa2b88"]
+query: SELECT "Priviledge"."id" AS "Priviledge_id", "Priviledge"."created_at" AS "Priviledge_created_at", "Priviledge"."updated_at" AS "Priviledge_updated_at" FROM "priviledges" "Priviledge" WHERE "Priviledge"."id" = ? -- PARAMETERS: ["bc6d989a-7dc2-4d08-a0f9-ae83414b38d9"]
+query: INSERT INTO "priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["b7c00e44-0359-411a-8cce-7a7eddf859b6","mutation","setting","to edit setting data","f7b6eea9-8355-4c05-ba91-51f2374e39b5"]
+query: INSERT INTO "priviledges"("id", "name", "category", "description", "created_at", "updated_at", "domain_id", "creator_id", "updater_id") VALUES (?, ?, ?, ?, datetime('now'), datetime('now'), ?, NULL, NULL) -- PARAMETERS: ["02cbf63d-49a4-45ab-b5d7-bb1b8f2f8d63","mutation","setting","to edit setting data","c6570dfa-6e94-44e2-b453-c78906885b4d"]
+query: SELECT "Priviledge"."id" AS "Priviledge_id", "Priviledge"."created_at" AS "Priviledge_created_at", "Priviledge"."updated_at" AS "Priviledge_updated_at" FROM "priviledges" "Priviledge" WHERE "Priviledge"."id" = ? -- PARAMETERS: ["b7c00e44-0359-411a-8cce-7a7eddf859b6"]
+query: SELECT "Priviledge"."id" AS "Priviledge_id", "Priviledge"."created_at" AS "Priviledge_created_at", "Priviledge"."updated_at" AS "Priviledge_updated_at" FROM "priviledges" "Priviledge" WHERE "Priviledge"."id" = ? -- PARAMETERS: ["02cbf63d-49a4-45ab-b5d7-bb1b8f2f8d63"]
+Database Migration Done.
+Done in 6.02s.
