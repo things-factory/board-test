@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/board-test",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -53,7 +53,6 @@
     "@things-scene/stomp": "*",
     "@things-scene/tab": "*",
     "@things-scene/table": "*",
-    "@things-scene/traffic": "*",
     "@things-scene/visualizer": "*",
     "@things-scene/wheel-sorter": "*"
   },
