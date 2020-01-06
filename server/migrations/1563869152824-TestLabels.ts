@@ -37,7 +37,7 @@ export class TestLabels1558006512362 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     const repository = getRepository(Board)
     const domainRepository = getRepository(Domain)
-    const domain = await domainRepository.findOne({ name: 'SYSTEM' })
+    const domain = await domainRepository.findOne({ name: 'DEMO' })
 
     const groupRepository = getRepository(Group)
     const group = await groupRepository.findOne({ name: 'LABEL' })
