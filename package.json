@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/board-test",
-  "version": "1.0.0-alpha.5",
+  "version": "2.0.0",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -23,8 +23,8 @@
     "migration:revert": "node ./node_modules/typeorm/cli.js migration:revert"
   },
   "dependencies": {
-    "@things-factory/board-service": "^1.0.0-alpha.1",
-    "@things-factory/shell": "^1.0.0-alpha.1",
+    "@things-factory/board-service": "^2.0.0",
+    "@things-factory/shell": "^2.0.0",
     "@things-scene/chartjs": "*",
     "@things-scene/clock": "*",
     "@things-scene/clone": "*",
@@ -54,8 +54,8 @@
     "@things-scene/wheel-sorter": "*"
   },
   "devDependencies": {
-    "@things-factory/board-app": "^1.0.0-alpha.1",
-    "@things-factory/board-ui": "^1.0.0-alpha.1",
+    "@things-factory/board-app": "^2.0.0",
+    "@things-factory/board-ui": "^2.0.0",
     "@things-factory/print-proxy-service": "^1.0.0-beta.3",
     "@things-factory/print-service": "^1.0.0-beta.4",
     "@things-factory/screencast-proxy-service": "^1.0.0-beta"
