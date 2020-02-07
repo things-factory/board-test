@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@things-factory/board-service": "^2.0.0",
-    "@things-factory/shell": "^2.0.0",
     "@things-scene/chartjs": "*",
     "@things-scene/clock": "*",
     "@things-scene/clone": "*",
