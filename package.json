@@ -55,8 +55,8 @@
   "devDependencies": {
     "@things-factory/board-app": "^2.0.0",
     "@things-factory/board-ui": "^2.0.0",
-    "@things-factory/print-proxy-service": "^1.0.0-beta.3",
-    "@things-factory/print-service": "^1.0.0-beta.4",
-    "@things-factory/screencast-proxy-service": "^1.0.0-beta"
+    "@things-factory/print-proxy-service": "^2.0.0",
+    "@things-factory/print-service": "^2.0.0",
+    "@things-factory/screencast-proxy-service": "^2.0.0"
   }
 }
